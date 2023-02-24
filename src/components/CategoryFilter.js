@@ -1,34 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function CategoryFilter({ CATEGORIES, handleCatButton }) {
-	// const [buttonClass, setButtonClass] = useState('')
+	const [buttonClass, setButtonClass] = useState('')
 
-  function handleClick(e) {
-    
-    handleCatButton(e)
-    let wantedButton = arrayOfButtons.find(button => button.key === e.target.id)
-    console.log(wantedButton)
-    
-    // console.log(selectedButton)
-  
-    // setButtonClass({
-    //   className: 'selected',
-    //   onClick: {handleClick},
-    //   id: wantedButton.id,
-    //   key: wantedButton.key
-    // })
-  
-  }
-  
-  let arrayOfButtons = CATEGORIES.map((cat) => (
-    <button
-      // className={buttonClass}
-      onClick={handleClick}
-      id={cat}
-      key={cat}
-    >
-      {cat}
-    </button>))
+	function handleClick(e) {
+		let wantedButton = arrayOfButtons.find(
+			(button) => button.key === e.target.id
+		)
+		setButtonClass(wantedButton.key)
+		handleCatButton(e)
+	}
+	let arrayOfButtons = CATEGORIES.map((cat) => (
+		<button
+			className={cat === buttonClass ? 'selected' : null}
+			onClick={handleClick}
+			id={cat}
+			key={cat}
+		>
+			{cat}
+		</button>
+	))
 
 	return (
 		<div className='categories'>
@@ -37,5 +28,4 @@ function CategoryFilter({ CATEGORIES, handleCatButton }) {
 		</div>
 	)
 }
-
 export default CategoryFilter

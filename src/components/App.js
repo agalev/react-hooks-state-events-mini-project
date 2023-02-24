@@ -27,11 +27,10 @@ function App() {
 		setTaskList(catFilter)
 	}
 
-	function handleFormSubmit(e) {
+	function onTaskFormSubmit(e) {
 		e.preventDefault()
 
     data.push(formData)
-    // console.log(data)
 		setTaskList([...data])
 	}
 
@@ -51,7 +50,7 @@ function App() {
 			<NewTaskForm
 				CATEGORIES={CATEGORIES}
 				formData={formData}
-				handleFormSubmit={handleFormSubmit}
+				onTaskFormSubmit={onTaskFormSubmit}
 				handleFieldChange={handleFieldChange}
 			/>
 			<TaskList tasks={taskList} onDelete={handleDelete} />

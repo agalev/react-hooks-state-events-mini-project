@@ -1,9 +1,9 @@
 import React from 'react'
 
-function NewTaskForm({ CATEGORIES, formData, handleFieldChange, handleFormSubmit }) {
+function NewTaskForm({ CATEGORIES, formData, handleFieldChange, onTaskFormSubmit }) {
   const catFilter = CATEGORIES.filter(cat => cat !== 'All')
 	return (
-		<form className='new-task-form' onSubmit={handleFormSubmit}>
+		<form className='new-task-form' onSubmit={onTaskFormSubmit}>
 			<label>
 				Details
 				<input type='text' name='text' value={formData.text} onChange={handleFieldChange} />
