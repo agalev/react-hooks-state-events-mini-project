@@ -1,21 +1,24 @@
-import React from "react";
+import React from 'react'
 
-function NewTaskForm() {
-  return (
-    <form className="new-task-form">
-      <label>
-        Details
-        <input type="text" name="text" />
-      </label>
-      <label>
-        Category
-        <select name="category">
-          {/* render <option> elements for each category here */}
-        </select>
-      </label>
-      <input type="submit" value="Add task" />
-    </form>
-  );
+function NewTaskForm({ CATEGORIES, formData, handleFieldChange, handleFormSubmit }) {
+  const catFilter = CATEGORIES.filter(cat => cat !== 'All')
+	return (
+		<form className='new-task-form' onSubmit={handleFormSubmit}>
+			<label>
+				Details
+				<input type='text' name='text' value={formData.text} onChange={handleFieldChange} />
+			</label>
+			<label>
+				Category
+				<select name='category' onChange={handleFieldChange}>
+					{catFilter.map((cat) => (
+						<option key={cat} onChange={handleFieldChange}>{cat}</option>
+					))}
+				</select>
+			</label>
+			<input type='submit' value='Add task' />
+		</form>
+	)
 }
 
-export default NewTaskForm;
+export default NewTaskForm

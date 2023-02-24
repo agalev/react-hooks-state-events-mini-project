@@ -1,11 +1,15 @@
-import React from "react";
+import React from 'react'
+import Task from './Task'
+import {v4 as uuid } from 'uuid'
 
-function TaskList() {
-  return (
-    <div className="tasks">
-      {/* display a list of tasks using Task component */}
-    </div>
-  );
+function TaskList({ tasks, onDelete }) {
+	return (
+		<div className='tasks'>
+			{tasks.map((task) => (
+				<Task key={uuid()} text={task.text} category={task.category} onDelete={onDelete} />
+			))}
+		</div>
+	)
 }
 
-export default TaskList;
+export default TaskList
